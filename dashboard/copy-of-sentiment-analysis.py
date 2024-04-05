@@ -36,7 +36,7 @@ warnings.filterwarnings("ignore")
 st.title('Hasil Analisis Sentimen Aksi Demokrasi di Indonesia pada Komentar Media Sosial YouTube')
 ################# Model Testing Sentiment Result #################
 df_merged = pd.read_csv(
-    "https://raw.githubusercontent.com/faizahmp/sentiment-analysis-ta/main/data/df_merged.csv")
+    "https://raw.githubusercontent.com/faizahmp/sentiment-analysis/main/data/df_merged.csv")
 
 st.header('Hasil Sentimen dengan Model')
 labels = ['Negatif', 'Positif']
