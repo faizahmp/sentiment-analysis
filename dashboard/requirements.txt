@@ -1,4 +1,6 @@
+triu
 scipy
+gensim
 Babel
 matplotlib
 numpy
@@ -11,7 +13,6 @@ torch
 transformers
 keras
 sastrawi
-gensim
 tensorflow
 scikit-learn
 nltk
