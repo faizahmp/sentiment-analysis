@@ -1,0 +1,17 @@
+Babel
+matplotlib
+numpy
+pillow
+wordcloud
+pandas
+seaborn
+streamlit==1.26.0
+torch
+transformers
+keras
+sastrawi
+gensim
+tensorflow
+scikit-learn
+nltk
+scipy
