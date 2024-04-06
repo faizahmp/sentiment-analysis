@@ -123,33 +123,16 @@ st.pyplot(fig)
 
 ##### SVM #######
 # feature extraction  / Tokenization (Word2Vec)
-tokenized_texts = [word_tokenize(text.lower()) for text in df_merged['text']]
-word2vec_model = Word2Vec(
-    tokenized_texts, vector_size=100, window=5, min_count=1, sg=1)
-word_vectors = np.array([np.mean([word2vec_model.wv[word] for word in doc if word in word2vec_model.wv] or [np.zeros(100)], axis=0)
-                         for doc in tokenized_texts])
-sentiment = df_merged['sentiment'].values
-X_train, X_test, y_train, y_test = train_test_split(
-    word_vectors, sentiment, test_size=0.2, random_state=42)
-svm_model = SVC(kernel='linear')
-svm_model.fit(X_train, y_train)
-y_pred = svm_model.predict(X_test)
+load_model = load('/model/svm_model.joblib')
+y_pred = load_model.predict(X_test)
 
 svm_accuracy = accuracy_score(y_test, y_pred)
 svm_precision = precision_score(y_test, y_pred)
 svm_recall = recall_score(y_test, y_pred)
 
 ##### NAIVE BAYES #######
-text = df_merged['text'].values
-sentiment = df_merged['sentiment'].values
-X_train, X_test, y_train, y_test = train_test_split(
-    text, sentiment, test_size=0.2, random_state=42)
-vectorizer = TfidfVectorizer(max_features=10000)
-X_train_vec = vectorizer.fit_transform(X_train)
-X_test_vec = vectorizer.transform(X_test)
-nb_classifier = MultinomialNB()
-nb_classifier.fit(X_train_vec, y_train)
-y_pred = nb_classifier.predict(X_test_vec)
+load_model = load('/model/mnb_model.joblib')
+y_pred = load_model.predict(X_test)
 
 nb_accuracy = accuracy_score(y_test, y_pred)
 nb_precision = precision_score(y_test, y_pred)
