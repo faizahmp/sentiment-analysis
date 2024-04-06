@@ -16,6 +16,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.pipeline import Pipeline
 import warnings
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
@@ -124,20 +125,25 @@ st.pyplot(fig)
 
 ##### SVM #######
 # feature extraction  / Tokenization (Word2Vec)
+df_merged_1 = pd.read_csv()
 load_model = load('model/svm_model.joblib')
-y_pred = load_model.predict(X_test)
+X_train, X_test, y_train, y_test = train_test_split(
+    df_merged_1['text'], df_merged_1['sentiment'], test_size=0.2, random_state=42)
+y_pred_svm = load_model.predict(X_test)
 
-svm_accuracy = accuracy_score(y_test, y_pred)
-svm_precision = precision_score(y_test, y_pred)
-svm_recall = recall_score(y_test, y_pred)
+svm_accuracy = accuracy_score(y_test, y_pred_svm)
+svm_precision = precision_score(y_test, y_pred_svm)
+svm_recall = recall_score(y_test, y_pred_svm)
 
 ##### NAIVE BAYES #######
 load_model = load('model/mnb_model.joblib')
-y_pred = load_model.predict(X_test)
+X_train, X_test, y_train, y_test = train_test_split(
+    df_merged_1['text'], df_merged_1['sentiment'], test_size=0.2, random_state=42)
+y_pred_nb = load_model.predict(X_test)
 
-nb_accuracy = accuracy_score(y_test, y_pred)
-nb_precision = precision_score(y_test, y_pred)
-nb_recall = recall_score(y_test, y_pred)
+nb_accuracy = accuracy_score(y_test, y_pred_nb)
+nb_precision = precision_score(y_test, y_pred_nb)
+nb_recall = recall_score(y_test, y_pred_nb)
 
 ##### INDOBERT #######
 # if torch.cuda.is_available():
