@@ -124,7 +124,7 @@ st.pyplot(fig)
 
 ##### SVM #######
 # feature extraction  / Tokenization (Word2Vec)
-load_model = load('/model/svm_model.joblib')
+load_model = load('model/svm_model.joblib')
 y_pred = load_model.predict(X_test)
 
 svm_accuracy = accuracy_score(y_test, y_pred)
@@ -132,7 +132,7 @@ svm_precision = precision_score(y_test, y_pred)
 svm_recall = recall_score(y_test, y_pred)
 
 ##### NAIVE BAYES #######
-load_model = load('/model/mnb_model.joblib')
+load_model = load('model/mnb_model.joblib')
 y_pred = load_model.predict(X_test)
 
 nb_accuracy = accuracy_score(y_test, y_pred)
