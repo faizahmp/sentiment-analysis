@@ -285,7 +285,8 @@ with col3:
     st.metric("Recall", value=recall)
 
 x = np.arange(3)
-indobert = [90, 87, 87]
+indobert = [round(idbert_acc * 100, 2), round(idbert_precision * 100, 2),
+            round(idbert_recall * 100, 2)]
 nb = [round(nb_accuracy * 100, 2), round(nb_precision * 100, 2),
       round(nb_recall * 100, 2)]
 svm = [round(svm_accuracy * 100, 2), round(svm_precision * 100, 2),
