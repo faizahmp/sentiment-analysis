@@ -126,7 +126,7 @@ st.pyplot(fig)
 ##### SVM #######
 # feature extraction  / Tokenization (Word2Vec)
 df_merged_1 = pd.read_csv(
-    'https://raw.githubusercontent.com/faizahmp/sentiment-analysis/main/data/df_merged_cut.csv')
+    'https://raw.githubusercontent.com/faizahmp/sentiment-analysis/main/data/df_merged_cut_tokenized.csv')
 load_model = load('model/svm_model.joblib')
 X_train, X_test, y_train, y_test = train_test_split(
     df_merged_1['tokenized_text'], df_merged_1['sentiment'], test_size=0.2, random_state=42)
